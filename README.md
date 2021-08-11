@@ -13,7 +13,22 @@
 <p><strong>Logging</strong></p>
 <p>Весь журнал ведется c помощью Log4J с использованием аннотации @ Log4j2.&nbsp;</p>
 <p>В log4j2.properties есть две стратегии: консольная и файловая. Файл со всей информацией журнала будет автоматически создан в папке пользователя с именем test_automation.log. Если вы хотите его изменить, обновите значение свойства appender.file.fileName. Log.error используется для регистрации всех исключений, которые может вызывать эта архитектура.&nbsp;log.info или log.debug для регистрации важной информации, такой как пользователи, автоматически генерируемой dataGenerator<strong>.</strong></p>
-<p><strong>Properties</strong><br />src/main/resources/general.properties - <br />src/main/resources/grid.properties<br />src/main/resources/local.properties<br />src/main/resources/log4j2.properties<br /><br /></p>
+<p><strong>Properties</strong><br />
+  <p>В src/main/resources/ есть 3 файла свойств (конфигурации):</p>
+<p>general.properties:&nbsp; базовый URL, тайм-аут и локализация;<br />grid.properties: URL-адрес и порт для использования grid Selenium ;<br />local.properties: браузер для использования в локальном исполнении;</p>
+<p>В src/main/resources/log4j2.properties  настройки для log4j2;</p>
+<br /></p>
 <p><strong>Test Case/ Test Suite:</strong><br />src/test/java/projectTest/<strong>BaseTest.java</strong> - Предварительное условие использует @Beforetest из TestNG, создает экземпляр браузера на основе значений, переданных либо локальному, либо удаленному выполнению. Постусловие использует @AfterMethod для закрытия экземпляра браузера.<br />src/test/java/projectTest/LoginTest.java - тестовый случаи;</p>
-<p><br /><strong>Define suite test for testNG:</strong><br />src/test/resources/suites/local.xml <br />src/test/resources/suites/parallel.xml</p>
+<p><br /><strong>Define profile test suite:</strong><br />src/test/resources/suites/local.xml <br />src/test/resources/suites/parallel.xml</p>
+<p>&nbsp;</p>
+
+<p>Здесь определен профиль вызова test suite - web-execution</p>
+<p><code></code></p>
+<p>профиль, web-execution, созданный&nbsp; в pom.xml для выполнения пакета тестов local.xml/parallel.xml из command line.</p>
+<p>Чтобы выполнить этот suite через командную строку вы можете вызвать параметр -P и&nbsp; профиль. Example:</p>
+<pre><strong>local</strong></pre>
+<pre>mvn <span class="pl-c1">test</span> -P web-execution -D testng.dtd.http=true<br /><br /><strong>parallel</strong></pre>
+<pre>mvn test -P web-execution -D suite=parallel -Dtestng.dtd.http=true </pre>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 <p>&nbsp;</p>
