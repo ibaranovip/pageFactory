@@ -20,15 +20,12 @@
 <br /></p>
 <p><strong>Test Case/ Test Suite:</strong><br />src/test/java/projectTest/<strong>BaseTest.java</strong> - Предварительное условие использует @Beforetest из TestNG, создает экземпляр браузера на основе значений, переданных либо локальному, либо удаленному выполнению. Постусловие использует @AfterMethod для закрытия экземпляра браузера.<br />src/test/java/projectTest/LoginTest.java - тестовый случаи;</p>
 <p><br /><strong>Define profile test suite:</strong><br />src/test/resources/suites/local.xml <br />src/test/resources/suites/parallel.xml</p>
-<p>&nbsp;</p>
-
-<p>Здесь определен профиль вызова test suite - web-execution</p>
-<p><code></code></p>
+ <p>Здесь определен профиль вызова test suite - web-execution</p>
 <p>профиль, web-execution, созданный&nbsp; в pom.xml для выполнения пакета тестов local.xml/parallel.xml из command line.</p>
 <p>Чтобы выполнить этот suite через командную строку вы можете вызвать параметр -P и&nbsp; профиль. Example:</p>
-<pre><strong>local</strong></pre>
-<pre>mvn <span class="pl-c1">test</span> -P web-execution -D testng.dtd.http=true<br /><br /><strong>parallel</strong></pre>
+<p style="padding-left: 40px; text-align: justify;"><strong>Запуск тестов и отчетов</strong></p>
+<p>local</p>
+<pre>mvn <span class="pl-c1">test</span> -P web-execution -D testng.dtd.http=true<br /><br /></pre>
+<p>parallel</p>
 <pre>mvn test -P web-execution -D suite=parallel -Dtestng.dtd.http=true </pre>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+<p>Generate allure report;</p><br> <pre>allure serve target/allure-results</pre></p>
